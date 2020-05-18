@@ -19,26 +19,26 @@ $userguideInfo = $userguide->getList();
 	<!-- FontAwesome core CSS -->
 	<link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="assets/simple-line-icons.css">
-
+	<!-- Custom Layout -->
 	<link rel="stylesheet" href="assets/style.css">
+	<link rel="stylesheet" href="assets/responsive.css">
+	
 	<title>User Guide</title>
-
-	<script src="assets/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
-
 </head> 
 
 <body>
 	<div class="container" style="max-width: 100%; margin-top: 85px;">
 		<div class="row">
 			<div class="col-md-3 left">
-				<aside id="sidebar">
+
+				<div class="searching-area">
 					<!-- Searching -->
 					<input id="filter" name="filter" class="filter form-control" data-alf="#menu" placeholder="Search User Guide">
+				</div>
+				<aside class="sidebar">
 
-					<div class="inside">
-						<!-- List User Guide -->
-						<div id="userguide_list"></div>
-					</div>
+					<!-- List User Guide -->
+					<div id="userguide_list"></div>
 				</aside>
 			</div>
 
@@ -163,25 +163,20 @@ $userguideInfo = $userguide->getList();
 		</div>
 	</nav>
 
-	<!-- Script -->
+	<!-- jQuery -->
 	<script src='assets/js/jquery.js'></script>
+	<!-- Bootstrap -->
 	<script src='assets/js/popper.js'></script>
-	<script src='assets/tree.jquery.js'></script>
 	<script src='assets/js/bootstrap.js'></script>
+	
+	<!-- Textarea Editor TinyMCE -->
+	<script src="assets/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
 	<script src="assets/tinymce/custom.tinymce.js"></script>
-	<script src='assets/script.js'></script>
+	
+	<!-- Tree JS -->
+	<script type="text/javascript" src="assets/tree.jquery.js"></script>
+	<!-- Load Data Tree Js-->
 	<script src="user_guide.js"></script> 
-
-	<script>
-		$(document).ready(function() {
-
-			$('#sidebar').stickySidebar({
-				sidebarTopMargin: 20,
-				footerThreshold: 100
-			});
-
-		});
-	</script>
 
 	<script>
 		$(document).ready(function() {

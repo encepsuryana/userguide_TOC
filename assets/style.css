@@ -70,22 +70,6 @@ nav {
   margin-bottom: 15px;
 }
 
-.inside {
-  background-color: #fbfbfb;
-  padding: 10px;
-  overflow: auto;
-  max-height: 520px;
-}
-
-#sidebar.sticky {
-  float: none;
-  position: fixed;
-  z-index: 6;
-  left: auto;
-  min-width: 23%;
-  width: 70px;
-}
-
 .filter {
   margin-bottom: 0.4rem;
   padding-right: 15px;
@@ -503,11 +487,20 @@ hr {
   scroll-behavior: smooth;
 }
 
+
+.sidebar {
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 520px;
+  scroll-behavior: smooth;
+}
+
 .button-add {
   position: absolute;
   z-index: 1;
   right: 50px;
-  bottom: -50px;
+  bottom: -15px;
 }
 
 .gedf-card {
