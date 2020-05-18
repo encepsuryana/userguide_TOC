@@ -15,19 +15,19 @@ $userguideInfo = $userguide->getList();
 	<meta name="author" content="">
 
 	<!-- Bootstrap core CSS -->
-	<link rel="stylesheet" href="assets/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
 	<!-- FontAwesome core CSS -->
-	<link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="assets/simple-line-icons.css">
+	<link rel="stylesheet" type="text/css" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/simple-line-icons.css">
 	<!-- Custom Layout -->
-	<link rel="stylesheet" href="assets/style.css">
-	<link rel="stylesheet" href="assets/responsive.css">
+	<link rel="stylesheet" type="text/css" href="assets/style.css">
+	<link rel="stylesheet" type="text/css" href="assets/responsive.css">
 	
 	<title>User Guide</title>
 </head> 
 
 <body>
-	<div class="container" style="margin-top: 85px;">
+	<div class="container" style="max-width: 100%; margin-top: 85px;">
 		<div class="row">
 			<div class="col-md-3 left-area">
 
@@ -60,23 +60,22 @@ $userguideInfo = $userguide->getList();
 
 													<div class="col-md-10">
 														
-														<h3 class="text-capitalize text-title">
+														<h2 class="text-capitalize text-title">
 															<?php print $element['featName']; ?>
 															<a class='linked-userguide' href='#<?php print $element['featLink']; ?>'><i class='fa fa-link' aria-hidden='true'></i></a>
-														</h3>
+														</h2>
 
 														<!--<div class="text-muted h7 mb-2">
 															<i class="fa fa-calendar"></i> <?php print $element['lastUpdate']; ?> 
 														</div> -->
 													</div>
 													<div class="col-md-2">
-														<div class="editable-content">
+														<div class="editable-content" onclick="openPane();">
 															<i class="fa fa-caret-down" aria-hidden="true">Action</i>
-
-															<div class="action-content">
-																<button type="submit" class="btn btn-sm btn-primary update-userguide" data-update-userguideid="<?php print $element['id'];?>">Edit</button>
-																<button type="submit" class="btn btn-sm btn-danger delete-userguide" data-delete-userguideid="<?php print $element['id'];?>">Delete</button>
-															</div>
+														</div>
+														<div id="show" class="action-content">
+															<button type="submit" class="btn btn-sm btn-primary update-userguide" data-update-userguideid="<?php print $element['id'];?>">Edit</button>
+															<button type="submit" class="btn btn-sm btn-danger delete-userguide" data-delete-userguideid="<?php print $element['id'];?>">Delete</button>
 														</div>
 													</div>
 												</div>
@@ -84,7 +83,8 @@ $userguideInfo = $userguide->getList();
 
 												<!--- Feature Content -->
 												<div class="content-feature">
-													<p class="card-text"><?php print $element['featContent']; ?></p>
+													<div class="card-text"><?php print $element['featContent']; ?></div>
+													<div class="modal"></div>
 												</div>
 
 											</div>                    
@@ -102,7 +102,7 @@ $userguideInfo = $userguide->getList();
 				</div>
 
 				<!-- Modal -->
-				<div class="modal fade" id="ModalNewUserguide" tabindex="10" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				<div class="modal fade" id="ModalNewUserguide" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="true" data-keyboard="true">
 					<div class="modal-dialog modal-dialog-centered" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
@@ -164,15 +164,15 @@ $userguideInfo = $userguide->getList();
 	</nav>
 
 	<!-- jQuery -->
-	<script src='assets/js/jquery.js'></script>
+	<script type="text/javascript" src='assets/js/jquery.js'></script>
 	<!-- Bootstrap -->
-	<script src='assets/js/popper.js'></script>
-	<script src='assets/js/bootstrap.js'></script>
+	<script type="text/javascript" src='assets/js/popper.js'></script>
+	<script type="text/javascript" src='assets/js/bootstrap.js'></script>
 	
 	<!-- Textarea Editor TinyMCE -->
-	<script src="assets/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
-	<script src="assets/tinymce/custom.tinymce.js"></script>
-	
+	<script type="text/javascript" src="assets/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
+	<script type="text/javascript" src="assets/tinymce/custom.tinymce.js"></script>
+
 	<!-- Tree JS -->
 	<script type="text/javascript" src="assets/tree.jquery.js"></script>
 	<!-- Load Data Tree Js-->

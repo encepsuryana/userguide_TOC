@@ -7,9 +7,31 @@ html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   scroll-behavior: smooth;
-  background: #fff;
 }
 
+h1 {
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px; 
+}
+
+h6 {
+ font-size: 12px; 
+}
 
 :focus {
   outline: 0
@@ -19,26 +41,13 @@ html {
   text-decoration: none
 }
 
-/* clearfix */
-.clearfix:before, .clearfix:after {
-  content: "";
-  display: table;
-}
-
-.clearfix:after {
-  clear: both;
-}
-
-.clearfix {
-  zoom: 1;
-}
-
 /* HTML ELEMENTS....................................... */
 body {
   background: #fff;
   color: ##333;
   font: 13px/1.4em 'Open Sans', sans-serif;
   text-align: left;
+  background: #fff;
 }
 
 a,
@@ -316,6 +325,12 @@ span.jquser-dragging {
   height: 30px;
   font-size: 13px;
 }
+.form-control:focus,
+.btn-primary:focus, .btn-primary.focus,
+.btn-danger:focus, .btn-danger.focus,
+.btn-secondary:focus, .btn-secondary.focus, {
+  box-shadow: none;
+}
 
 .btn-default {
   background: #fff;
@@ -343,11 +358,7 @@ hr {
 [class^="fa fa-link"] {
   position: relative;
   right: -5px;
-  top: -1px;
-}
-
-[class^="fa fa-link"]:hover {
-  text-decoration: underline;
+  top: 1px;
 }
 
 .text-title {
@@ -369,15 +380,8 @@ hr {
   float: right;
 }
 
-.editable-content .action-content {
-  display: none;
-}
-
-.editable-content:hover .action-content {
-  display: inline-block;
-}
-
 .action-content {
+  display: none;
   position: absolute;
   background: white;
   border: 1px solid #e8e8e8;
@@ -388,7 +392,8 @@ hr {
 }
 
 .btn-secondary,
-.btn-primary {
+.btn-primary,
+.btn-danger {
   font-size: 13px;
 }
 
@@ -407,10 +412,13 @@ hr {
 
 .sidebar {
   position: relative;
+  background: #f2f2f2;
   overflow-y: auto;
   overflow-x: hidden;
   max-height: 520px;
   scroll-behavior: smooth;
+  width: 100%;
+  padding: 10px;
 }
 
 .button-add {
@@ -422,4 +430,31 @@ hr {
 
 .gedf-card {
   margin-bottom: 3rem;
+}
+
+img {
+  margin: auto 10px;
+}
+
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
+}
+
+.modal img, .modal span {
+  z-index: 10;
 }

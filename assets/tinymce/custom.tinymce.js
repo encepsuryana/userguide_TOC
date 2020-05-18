@@ -9,14 +9,13 @@
  function tinyMCEEditor(id) {
     tinymce.init({
         selector: 'textarea#'+id,
-        themes: 'modern',
         width:'100%',
         height: 550,
         content_css: 'assets/tinymce/custom.style.css',
         plugins: [
         "advlist autolink lists link image charmap print",
         "preview anchor searchreplace visualblocks code",
-        "fullscreen insertdatetime media table paste"
+        "fullscreen insertdatetime media table paste imagetools wordcount"
         ],
         file_picker_callback: function(callback, value, meta) {
 

@@ -29,20 +29,19 @@ if(!empty($post['action']) && $post['action']=="create") {
           <div class="row">
             <div class="col-md-10">
 
-              <h3 class="text-capitalize text-title">
+              <h2 class="text-capitalize text-title">
                 '.$post['featName'].'
                 <a class="linked-userguide" href="#'.$post['featLink'].'"><i class="fa fa-link" aria-hidden="true"></i></a>
-              </h3>
+              </h2>
             </div>
 
             <div class="col-md-2">
-              <div class="editable-content">
+              <div class="editable-content" onclick="openPane();">
                 <i class="fa fa-caret-down" aria-hidden="true">Action</i>
-
-                <div class="action-content">
-                  <button type="submit" class="btn btn-sm btn-primary update-userguide" data-update-userguideid="'.$status.'">Edit</button>
-                  <button type="submit" class="btn btn-sm btn-danger delete-userguide" data-delete-userguideid="'.$status.'">Delete</button>
-                </div>
+              </div>
+              <div id="show" class="action-content">
+                <button type="submit" class="btn btn-sm btn-primary update-userguide" data-update-userguideid="'.$status.'">Edit</button>
+                <button type="submit" class="btn btn-sm btn-danger delete-userguide" data-delete-userguideid="'.$status.'">Delete</button>
               </div>
             </div>
           </div>
@@ -121,10 +120,10 @@ if(!empty($post['action']) && $post['action']=="update") {
           <!--- Feature Name -->
           <div class="row">
             <div class="col-md-10">
-              <h3 class="text-capitalize text-title">
+              <h2 class="text-capitalize text-title">
                 '.$post['featName'].'
                 <a class="linked-userguide" href="#'.$post['featLink'].'"><i class="fa fa-link" aria-hidden="true"></i></a>
-              </h3>
+              </h2>
               
               <!--<div class="text-muted h7 mb-2">
                  <i class="fa fa-calendar"></i> '.$post['lastUpdate'].' 
@@ -133,13 +132,12 @@ if(!empty($post['action']) && $post['action']=="update") {
             </div>
 
             <div class="col-md-2">
-              <div class="editable-content">
+              <div class="editable-content" onclick="openPane();">
                 <i class="fa fa-caret-down" aria-hidden="true">Action</i>
-
-                <div class="action-content">
-                  <button type="submit" class="btn btn-sm btn-outline-secondary update-userguide" data-update-userguideid="'.$status.'">Edit</button>
-                  <button type="submit" class="btn btn-sm btn-outline-secondary delete-userguide" data-delete-userguideid="'.$status.'">Delete</button>
-                </div>
+              </div>
+              <div id="show" class="action-content">
+                <button type="submit" class="btn btn-sm btn-primary update-userguide" data-update-userguideid="'.$status.'">Edit</button>
+                <button type="submit" class="btn btn-sm btn-danger delete-userguide" data-delete-userguideid="'.$status.'">Delete</button>
               </div>
             </div>
           </div>

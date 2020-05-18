@@ -1,10 +1,40 @@
+@media only screen and (min-width: 1367px) and (max-width: 1600px) { 
+	/* For HD Monitor 1300 px + */
+	.main_content {
+		max-height: 650px;
+	}
+	.sidebar {
+		max-height: 650px;
+	}
+}
+
+@media only screen and (max-width: 1280px) and (max-height: 1024px){ 
+	/* For HD Monitor 1280x1024 px */
+	.main_content {
+		max-height: 880px;
+	}
+	.sidebar {
+		max-height: 880px;
+	}
+}
+
+@media only screen and (min-width: 1920px) and (min-height: 1080px){ 
+	/* For HD Monitor 1920x1080 px */
+	.main_content {
+		max-height: 910px;
+	}
+	.sidebar {
+		max-height: 910px;
+	}
+}
+
 @media only screen and (max-width: 768px) {
 	/* For mobile phones: */
 	.sidebar {
 		max-height: 160px;
 		position: fixed;
 		z-index: 1;
-		background: #f2f2f2;
+		width: 93%;
 	}
 
 	.left-area {
@@ -16,6 +46,10 @@
 	.main_content {
 		top: 220px;
 		max-height: 500px;
+	}
+
+	.col-sm-8 {
+		margin-bottom: 10px;
 	}
 
 	.button-add {
