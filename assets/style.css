@@ -7,6 +7,7 @@ html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   scroll-behavior: smooth;
+  background: #fff;
 }
 
 
@@ -81,96 +82,7 @@ nav {
   list-style: none;
 }
 
-/* Footer .............. */
-footer {
-  background-color: #999;
-  height: 300px;
-  width: 100%;
-}
-
-
-#treeview {
-  height: 400px;
-}
-
-.options {
-  padding: 20px;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 260px;
-  top: 0;
-  background-color: #f5f5f5;
-}
-
-.caption {
-  font-size: 18px;
-  font-weight: 500;
-}
-
-.option {
-  margin-top: 10px;
-}
-
-.option > .dx-selectbox {
-  display: inline-block;
-  vertical-align: middle;
-  max-width: 350px;
-  width: 100%;
-  margin-top: 5px;
-}
-
-@media only screen and (max-width: 1023px) {
-  #scroll_parent {
-    bottom: 25px !important;
-    right: 25px !important;
-  }
-}
-
-#scroll_parent {
-  background: #006f9e;
-  cursor: pointer;
-  width: 50px;
-  height: 50px;
-  position: fixed;
-  bottom: 50px;
-  right: 50px;
-  z-index: 1002 !important;
-}
-
-#scroll_parent:hover {
-  opacity: 0.7;
-  transition: 0.1s;
-}
-
-.scroll_circle {
-  border-radius: 50%;
-}
-
-.scroll_round_corners {
-  border-radius: 5px;
-}
-
-#scroll_arrow {
-  width: 0px;
-  height: 0px;
-  border-left: 12px solid transparent;
-  border-right: 12px solid transparent;
-  border-bottom: 12px solid white;
-  margin: 0 auto;
-  margin-top: 19px;
-}
-
-#scroll_arrow:focus {
-  opacity: 0.7;
-  transition: 0.1s;
-}
-
-.scroll_hide_onload {
-  display: none;
-}
-
-
+/* Jquser Tree ......... */
 ul.jquser-tree {
   list-style: none outside;
   margin-left: 0;
@@ -358,6 +270,7 @@ span.jquser-dragging {
 }
 
 
+/* Custom Layout .........*/
 .card {
   border: 0;
 }
@@ -432,6 +345,7 @@ hr {
   right: -5px;
   top: -1px;
 }
+
 [class^="fa fa-link"]:hover {
   text-decoration: underline;
 }
@@ -487,6 +401,9 @@ hr {
   scroll-behavior: smooth;
 }
 
+.right-area {
+  padding: 0;
+}
 
 .sidebar {
   position: relative;

@@ -27,9 +27,9 @@ $userguideInfo = $userguide->getList();
 </head> 
 
 <body>
-	<div class="container" style="max-width: 100%; margin-top: 85px;">
+	<div class="container" style="margin-top: 85px;">
 		<div class="row">
-			<div class="col-md-3 left">
+			<div class="col-md-3 left-area">
 
 				<div class="searching-area">
 					<!-- Searching -->
@@ -43,7 +43,7 @@ $userguideInfo = $userguide->getList();
 			</div>
 
 			<!--- Main Content Load-->
-			<div class="col-md-9 right" style="padding: 0;">
+			<div class="col-md-9 right-area">
 
 				<div class="main_content" id="content">
 					<section class="showcase">
