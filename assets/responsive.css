@@ -1,0 +1,25 @@
+@media only screen and (max-width: 768px) {
+	/* For mobile phones: */
+	.sidebar {
+		max-height: 160px;
+		position: fixed;
+		z-index: 1;
+		background: #f2f2f2;
+	}
+
+	.left-area {
+		max-height: 160px;
+		position: fixed;
+		z-index: 1;
+	}
+
+	.main_content {
+		top: 220px;
+		max-height: 500px;
+	}
+
+	.button-add {
+		right: 20px;
+		bottom: -200px;
+	}
+}
