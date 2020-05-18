@@ -1,0 +1,515 @@
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+
+:focus {
+  outline: 0
+}
+
+:link, :visited {
+  text-decoration: none
+}
+
+/* clearfix */
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+/* HTML ELEMENTS....................................... */
+body {
+  background: #fff;
+  color: ##333;
+  font: 13px/1.4em 'Open Sans', sans-serif;
+  text-align: left;
+}
+
+a,
+a:hover,
+a:active {
+  color: #333;
+}
+
+/* Navigation .......... */
+nav {
+  background-color: #999;
+  width: 100%;
+  position: fixed;
+  top: 0;
+}
+
+.page-hdr {
+  color: #616161;
+  background-color: #bababa;
+  text-shadow: #e0e0e0 1px 1px 0;
+  font-weight: bold;
+  font-size: 1.3em;
+  width: 100% !important;
+  text-align: center;
+  padding: 5px;
+}
+
+.page-hdr h2 {
+  margin: 10px auto;
+  margin-bottom: 15px;
+}
+
+.inside {
+  background-color: #fbfbfb;
+  padding: 10px;
+  overflow: auto;
+  max-height: 520px;
+}
+
+#sidebar.sticky {
+  float: none;
+  position: fixed;
+  z-index: 6;
+  left: auto;
+  min-width: 23%;
+  width: 70px;
+}
+
+.filter {
+  margin-bottom: 0.4rem;
+  padding-right: 15px;
+}
+
+.filterable {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Footer .............. */
+footer {
+  background-color: #999;
+  height: 300px;
+  width: 100%;
+}
+
+
+#treeview {
+  height: 400px;
+}
+
+.options {
+  padding: 20px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 260px;
+  top: 0;
+  background-color: #f5f5f5;
+}
+
+.caption {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.option {
+  margin-top: 10px;
+}
+
+.option > .dx-selectbox {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 350px;
+  width: 100%;
+  margin-top: 5px;
+}
+
+@media only screen and (max-width: 1023px) {
+  #scroll_parent {
+    bottom: 25px !important;
+    right: 25px !important;
+  }
+}
+
+#scroll_parent {
+  background: #006f9e;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 1002 !important;
+}
+
+#scroll_parent:hover {
+  opacity: 0.7;
+  transition: 0.1s;
+}
+
+.scroll_circle {
+  border-radius: 50%;
+}
+
+.scroll_round_corners {
+  border-radius: 5px;
+}
+
+#scroll_arrow {
+  width: 0px;
+  height: 0px;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid white;
+  margin: 0 auto;
+  margin-top: 19px;
+}
+
+#scroll_arrow:focus {
+  opacity: 0.7;
+  transition: 0.1s;
+}
+
+.scroll_hide_onload {
+  display: none;
+}
+
+
+ul.jquser-tree {
+  list-style: none outside;
+  margin-left: 0;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+ul.jquser-tree ul.jquser_common {
+  list-style: none outside;
+  margin-left: 12px;
+  margin-right: 0;
+  margin-bottom: 0;
+  padding: 0;
+  display: block;
+}
+
+ul.jquser-tree li.jquser-closed > ul.jquser_common {
+  display: none;
+}
+
+ul.jquser-tree li.jquser_common {
+  clear: both;
+  list-style-type: none;
+}
+
+ul.jquser-tree .jquser-toggler {
+  border-bottom: none;
+  color: #333;
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+ul.jquser-tree .jquser-toggler:hover {
+  color: #000;
+  text-decoration: none;
+}
+
+ul.jquser-tree .jquser-toggler.jquser-closed {
+  background-position: 0 0;
+}
+
+ul.jquser-tree .jquser-toggler.jquser-toggler-left {
+  margin-right: 0.5em;
+}
+
+ul.jquser-tree .jquser-toggler.jquser-toggler-right {
+  margin-left: 0.5em;
+}
+
+ul.jquser-tree .jquser-element {
+  cursor: pointer;
+  position: relative;
+  display: -webkit-box;
+  display: flex;
+}
+
+ul.jquser-tree .jquser-title {
+  color: #1C4257;
+  vertical-align: middle;
+  margin-left: 1.5em;
+  margin-bottom: 5px;
+}
+
+ul.jquser-tree .jquser-title.jquser-title-folder {
+  margin-left: 0;
+}
+
+ul.jquser-tree li.jquser-folder {
+  margin-bottom: 4px;
+}
+
+ul.jquser-tree li.jquser-folder.jquser-closed {
+  margin-bottom: 1px;
+}
+
+ul.jquser-tree li.jquser-ghost {
+  position: relative;
+  z-index: 10;
+  margin-right: 10px;
+}
+
+ul.jquser-tree li.jquser-ghost span {
+  display: block;
+}
+
+ul.jquser-tree li.jquser-ghost span.jquser-circle {
+  border: solid 2px #0000ff;
+  border-radius: 100px;
+  height: 8px;
+  width: 8px;
+  position: absolute;
+  top: -4px;
+  left: -6px;
+  box-sizing: border-box;
+}
+
+ul.jquser-tree li.jquser-ghost span.jquser-line {
+  background-color: #0000ff;
+  height: 2px;
+  padding: 0;
+  position: absolute;
+  top: -1px;
+  left: 2px;
+  width: 100%;
+}
+
+ul.jquser-tree li.jquser-ghost.jquser-inside {
+  margin-left: 48px;
+}
+
+ul.jquser-tree span.jquser-border {
+  position: absolute;
+  display: block;
+  left: -2px;
+  top: 0;
+  border: solid 2px #0000ff;
+  border-radius: 6px;
+  margin: 0;
+  box-sizing: content-box;
+}
+
+ul.jquser-tree li.jquser-selected > .jquser-element,
+ul.jquser-tree li.jquser-selected > .jquser-element:hover {
+  background-color: #97BDD6;
+  background: -webkit-gradient(linear, left top, left bottom, from(#BEE0F5), to(#BEE0F6));
+  background: linear-gradient(#BEE0F5, #BEE0F6);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+ul.jquser-tree .jquser-moving > .jquser-element .jquser-title {
+  outline: dashed 1px #0000ff;
+}
+
+ul.jquser-tree.jquser-rtl {
+  direction: rtl;
+}
+
+ul.jquser-tree.jquser-rtl ul.jquser_common {
+  margin-left: 0;
+  margin-right: 12px;
+}
+
+ul.jquser-tree.jquser-rtl .jquser-toggler {
+  margin-left: 0.5em;
+  margin-right: 0;
+}
+
+ul.jquser-tree.jquser-rtl .jquser-title {
+  margin-left: 0;
+  margin-right: 1.5em;
+}
+
+ul.jquser-tree.jquser-rtl .jquser-title.jquser-title-folder {
+  margin-right: 0;
+}
+
+ul.jquser-tree.jquser-rtl li.jquser-ghost {
+  margin-right: 0;
+  margin-left: 10px;
+}
+
+ul.jquser-tree.jquser-rtl li.jquser-ghost span.jquser-circle {
+  right: -6px;
+}
+
+ul.jquser-tree.jquser-rtl li.jquser-ghost span.jquser-line {
+  right: 2px;
+}
+
+ul.jquser-tree.jquser-rtl li.jquser-ghost.jquser-inside {
+  margin-left: 0;
+  margin-right: 48px;
+}
+
+ul.jquser-tree.jquser-rtl span.jquser-border {
+  right: -2px;
+}
+
+span.jquser-dragging {
+  color: #fff;
+  background: #000;
+  opacity: 0.6;
+  cursor: pointer;
+  padding: 2px 8px;
+}
+
+
+.card {
+  border: 0;
+}
+
+.card-body {
+  padding: 0 1rem;
+}
+
+.content-feature {
+  text-align: justify;
+}
+
+.text-muted i {
+  margin: auto 5px;
+}
+
+[class^="modal"] {
+  padding: 5px;
+}
+
+.modal-body {
+  padding-top: 1rem;
+}
+
+.modal-dialog {
+  max-width: 1200px;
+}
+
+.modal-title {
+  margin-left: 15px;
+}
+
+.modal-header .close {
+  margin-right: inherit;
+}
+
+.modal-footer {
+  border: 0;
+  margin: 5px 1rem;
+}
+
+.form-control {
+  height: 30px;
+  font-size: 13px;
+}
+
+.btn-default {
+  background: #fff;
+  border: 1px solid #e3e3e3;
+}
+
+#render-userguide-data {
+  margin-bottom: 20px;
+}
+
+hr {
+  margin-top: 0;
+  margin-bottom: 1.8rem;
+}
+
+.anchor {
+  padding-top: -5px;
+}
+
+.linked-userguide {
+  font-size: 1rem;
+  margin-left: -7px;
+}
+
+[class^="fa fa-link"] {
+  position: relative;
+  right: -5px;
+  top: -1px;
+}
+[class^="fa fa-link"]:hover {
+  text-decoration: underline;
+}
+
+.text-title {
+  margin-left: -2.5px;
+  font-weight: 600;
+}
+
+.text-title a {
+  display: none;
+  z-index: 99;
+}
+
+.text-title:hover a {
+  display: inline-block;
+}
+
+.editable-content {
+  cursor: pointer;
+  float: right;
+}
+
+.editable-content .action-content {
+  display: none;
+}
+
+.editable-content:hover .action-content {
+  display: inline-block;
+}
+
+.action-content {
+  position: absolute;
+  background: white;
+  border: 1px solid #e8e8e8;
+  border-radius: 5px;
+  padding: 10px;
+  right: 5px;
+  top: 20px;
+}
+
+.btn-secondary,
+.btn-primary {
+  font-size: 13px;
+}
+
+.main_content {
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 520px;
+  top: 35px;
+  scroll-behavior: smooth;
+}
+
+.button-add {
+  position: absolute;
+  z-index: 1;
+  right: 50px;
+  bottom: -50px;
+}
+
+.gedf-card {
+  margin-bottom: 3rem;
+}
