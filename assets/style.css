@@ -380,15 +380,32 @@ hr {
   float: right;
 }
 
-.action-content {
+[id^="show"] {
   display: none;
+}
+
+[id^="show"]:target {
+  display: block;
+}
+
+.action-content {
   position: absolute;
   background: white;
   border: 1px solid #e8e8e8;
   border-radius: 5px;
   padding: 10px;
   right: 5px;
-  top: 20px;
+}
+.action-content span {
+  display: flex;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 8px;
+}
+
+.action-content span b {
+  position: absolute;
+  top: 5px;
+  right: 12px;
 }
 
 .btn-secondary,

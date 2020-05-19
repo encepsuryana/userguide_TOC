@@ -70,10 +70,11 @@ $userguideInfo = $userguide->getList();
 														</div> -->
 													</div>
 													<div class="col-md-2">
-														<div class="editable-content" onclick="openPane();">
-															<i class="fa fa-caret-down" aria-hidden="true">Action</i>
+														<div class="editable-content">
+															<a href="#show-<?php print $element['id'];?>"><i class="fa fa-caret-down" aria-hidden="true">Action</i></a>
 														</div>
-														<div id="show" class="action-content">
+														<div id="show-<?php print $element['id'];?>" class="action-content">
+															<span><i class="fa fa-caret-down" aria-hidden="true">Action</i><b><a href="#">x</a></b></span>
 															<button type="submit" class="btn btn-sm btn-primary update-userguide" data-update-userguideid="<?php print $element['id'];?>">Edit</button>
 															<button type="submit" class="btn btn-sm btn-danger delete-userguide" data-delete-userguideid="<?php print $element['id'];?>">Delete</button>
 														</div>

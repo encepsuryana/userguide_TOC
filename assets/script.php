@@ -51,19 +51,6 @@
 	document.getElementById("last-update").value = tampil;
 </script>
 
-<!-- Toogle Menu -->
-<script type="text/javascript">
-	function openPane() {
-		var open = document.getElementById('show');
-
-		if (open.style.display === 'none') {
-			open.style.display = 'block';
-		} else {
-			open.style.display = 'none';
-		}
-	}
-</script>
-
 <!-- Data Action -->
 <script>
 	var images = document.querySelectorAll('.card-text img'),
