@@ -1,5 +1,5 @@
 <?php 
-$link   = $_SERVER['PHP_SELF']; 
+$link   = $_SERVER['REQUEST_URI']; 
 $server = $_SERVER['SERVER_NAME'];
 $version= $_SERVER['SERVER_SOFTWARE'];
 $port   = $_SERVER['REMOTE_PORT'];
