@@ -1,12 +1,14 @@
 <?php
 // include user_guide class 
 include_once 'class/User_guide.php';
+require 'assets/script.php';
 // create obj
 $userguide = new User_guide();
 // post method
 $post = $_POST;
 // define array
-$json = array();	
+$json = array();
+
 // create record in database
 if(!empty($post['action']) && $post['action']=="create") {
 	$userguide->setFeatName($post['featName']);
@@ -37,30 +39,53 @@ if(!empty($post['action']) && $post['action']=="create") {
 
             <div class="col-md-2">
               <div class="editable-content">
-                <a href="#show-'.$post['userguide_id'].'"><i class="fa fa-caret-down" aria-hidden="true">Action</i></a>
+                <a href="#show-'.$status.'"><i class="fa fa-caret-down" aria-hidden="true">Action</i></a>
               </div>
-              <div id="show-'.$post['userguide_id'].'" class="action-content">
+              <div id="show-'.$status.'" class="action-content">
                 <span><i class="fa fa-caret-down" aria-hidden="true">Action</i><b><a href="#">x</a></b></span>
                 <button type="submit" class="btn btn-sm btn-primary update-userguide" data-update-userguideid="'.$status.'">Edit</button>
                 <button type="submit" class="btn btn-sm btn-danger delete-userguide" data-delete-userguideid="'.$status.'">Delete</button>
               </div>
             </div>
           </div>
-          <hr>
 
           <!--- Feature Content -->
           <div class="content-feature">
-            <p class="card-text">'.$post['featContent'].'</p>
+            <div class="card-text">
+              <article class="article">
+                <div class="text-muted h7 mb-2">
+                  '.$post['lastUpdate'].' • <span class="eta"></span>
+                </div>
+                <hr>
+                '.$post['featContent'].'
+              </article>
+            </div>
           </div>
         </div>                    
       </div>
-    </span>'
+    </span>
+
+    <script type="text/javascript">
+      $(function() {
+        $("article").each(function() {
+          const _this = $(this);
+          _this.readingTime({
+            readingTimeTarget: _this.find(".eta"),
+            success: function(data) {
+              //console.log(data);
+            },
+            error: function(data) {
+              _this.find(".eta").remove();
+            }
+          });
+        });
+      });
+    </script>'
     ;
 }
 
 // update record in database
 if(!empty($post['action']) && $post['action']=="fetch_userguide") {
-  require 'assets/script.php';
 	$userguide->setUserguideID($post['userguide_id']);
 	$fetchUserguide = $userguide->getUserguide();
 	header('Content-Type: application/json');
@@ -102,11 +127,11 @@ if(!empty($post['action']) && $post['action']=="fetch_userguide") {
 
 // update record in database
 if(!empty($post['action']) && $post['action']=="update") {
-	$userguide->setUserguideID($post['userguide_id']);
 	$userguide->setFeatName($post['featName']);
 	$userguide->setFeatLink($post['featLink']);
   $userguide->setFeatContent($post['featContent']);
-	$userguide->setLastUpdate($post['lastUpdate']);
+  $userguide->setLastUpdate($post['lastUpdate']);
+	$userguide->setUserguideID($post['userguide_id']);
 	$status = $userguide->update();
 	if(!empty($status)){
 		$json['msg'] = 'success';
@@ -125,11 +150,6 @@ if(!empty($post['action']) && $post['action']=="update") {
                 '.$post['featName'].'
                 <a class="linked-userguide" href="#'.$post['featLink'].'"><i class="fa fa-link" aria-hidden="true"></i></a>
               </h2>
-              
-              <!--<div class="text-muted h7 mb-2">
-                 <i class="fa fa-calendar"></i> '.$post['lastUpdate'].' 
-              </div>-->
-
             </div>
 
             <div class="col-md-2">
@@ -138,20 +158,43 @@ if(!empty($post['action']) && $post['action']=="update") {
               </div>
               <div id="show-'.$post['userguide_id'].'" class="action-content">
                 <span><i class="fa fa-caret-down" aria-hidden="true">Action</i><b><a href="#">x</a></b></span>
-                <button type="submit" class="btn btn-sm btn-primary update-userguide" data-update-userguideid="'.$status.'">Edit</button>
-                <button type="submit" class="btn btn-sm btn-danger delete-userguide" data-delete-userguideid="'.$status.'">Delete</button>
+                <button type="submit" class="btn btn-sm btn-primary update-userguide" data-update-userguideid="'.$post['userguide_id'].'">Edit</button>
+                <button type="submit" class="btn btn-sm btn-danger delete-userguide" data-delete-userguideid="'.$post['userguide_id'].'">Delete</button>
               </div>
             </div>
           </div>
-          <hr>
           
           <!--- Feature Content -->
           <div class="content-feature">
-            <p class="card-text">'.$post['featContent'].'</p>
+            <div class="card-text">
+              <article class="article">
+                <div class="text-muted h7 mb-2">
+                  '.$post['lastUpdate'].' • <span class="eta"></span>
+                </div>
+                <hr>
+                '.$post['featContent'].'
+              </article>
+            </div>
           </div>
       </div>                    
     </div>
-    </span>';
+    </span>
+    <script type="text/javascript">
+      $(function() {
+        $("article").each(function() {
+          const _this = $(this);
+          _this.readingTime({
+            readingTimeTarget: _this.find(".eta"),
+            success: function(data) {
+              //console.log(data);
+            },
+            error: function(data) {
+              _this.find(".eta").remove();
+            }
+          });
+        });
+      });
+    </script>';
 }
 
 // delete record from database

@@ -11,62 +11,87 @@
         selector: 'textarea#'+id,
         width:'100%',
         height: 550,
-        content_css: 'assets/tinymce/custom.style.css',
         plugins: [
         "advlist autolink lists link image charmap print",
         "preview anchor searchreplace visualblocks code",
         "fullscreen insertdatetime media table paste imagetools wordcount"
         ],
-        file_picker_callback: function(callback, value, meta) {
+        content_style: `
+        body {
+            font-size: 13px;
+        }
 
-                // File type
-                if (meta.filetype =="media" || meta.filetype =="image") {
+        img {
+            margin: auto 10px;
+        }
 
-                    // Trigger click on file element
-                    jQuery("#fileupload").trigger("click");
-                    $("#fileupload").unbind('change');
+        blockquote {
+          background: #f9f9f9;
+          border-left: 10px solid #ccc;
+          margin: 1.5em 10px;
+          padding: 0.5em 10px;
+      }
 
-                    // File selection
-                    jQuery("#fileupload").on("change", function() {
-                        var file = this.files[0];
-                        var reader = new FileReader();
-                        
-                        // FormData
-                        var fd = new FormData();
-                        var files = file;
-                        fd.append("file",files);
-                        fd.append('filetype',meta.filetype);
+      blockquote:before {
+          color: #ccc;
+          content: open-quote;
+          font-size: 4em;
+          line-height: 0.1em;
+          margin-right: 0.25em;
+          vertical-align: -0.4em;
+      }
 
-                        var filename = "";
-                        
-                        // AJAX
-                        jQuery.ajax({
-                            url: "upload.php",
-                            type: "post",
-                            data: fd,
-                            contentType: false,
-                            processData: false,
-                            async: false,
-                            success: function(response){
-                                filename = response;
-                            }
-                        });
+      blockquote p {
+          display: inline;
+      }
+      `,
+      contextmenu: 'paste | link media image inserttable | cell row column deletetable',
+      file_picker_callback: function(callback, value, meta) {
 
-                        reader.onload = function(e) {
-                            callback("Upload/"+filename);
-                        };
-                        reader.readAsDataURL(file);
-                    });
-                }
-                
-            },
-            browser_spellcheck : true,
-            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
-            branding: false,
-            mobile: {
-                menubar: true
-            }
-        });
+        if (meta.filetype =="media" || meta.filetype =="image") {
+
+            jQuery("#fileupload").trigger("click");
+            $("#fileupload").unbind('change');
+
+            jQuery("#fileupload").on("change", function() {
+                var file = this.files[0];
+                var reader = new FileReader();
+
+                var fd = new FormData();
+                var files = file;
+                fd.append("file",files);
+                fd.append('filetype',meta.filetype);
+
+                var filename = "";
+
+                jQuery.ajax({
+                    url: "upload.php",
+                    type: "post",
+                    data: fd,
+                    contentType: false,
+                    processData: false,
+                    async: false,
+                    success: function(response){
+                        filename = response;
+                    }
+                });
+
+                reader.onload = function(e) {
+                    callback("Upload/"+filename);
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+    },
+    browser_spellcheck : true,
+    toolbar: "insertfile undo redo | styleselect | bold italic strikethrough blockquote forecolor backcolor| alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+    branding: false,
+    mobile: {
+        menubar: true
+    },
+    paste_data_images: true
+});
 }
 
 // insert record in database

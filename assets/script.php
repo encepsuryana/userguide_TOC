@@ -46,27 +46,7 @@
 	var tampilTanggal = hari + ", " + tanggal + " " + bulan + " " + tahun;
 	var tampilWaktu   = jam + ":" + menit + ":" + detik;
 
-	var tampil = tampilTanggal + " | " + tampilWaktu;
+	var tampil = tampilTanggal;
 
 	document.getElementById("last-update").value = tampil;
-</script>
-
-<!-- Data Action -->
-<script>
-	var images = document.querySelectorAll('.card-text img'),
-	modal = document.querySelector('.modal');
-
-	// Loops through the all the images selected...
-	images.forEach(function (image) {
-    	// When the image is clicked...
-    	image.addEventListener('click', function(event) {
-    		modal.innerHTML = '<div class="modal-content"><img src="' + event.target.src + '"><br><span>' + event.target.alt + '</span></div>';
-    		modal.style.display = 'block';
-    	});
-    });
-
-	// When the user clicks somewhere in the "modal" area it automatically closes itself
-	modal.addEventListener('click', function () {
-		this.style.display = 'none';
-	});
 </script>

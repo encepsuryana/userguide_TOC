@@ -27,13 +27,18 @@ $userguideInfo = $userguide->getList();
 </head> 
 
 <body>
-	<div class="container" style="max-width: 100%; margin-top: 85px;">
+	<div class="container" style="max-width: 98%; margin-top: 85px;">
 		<div class="row">
 			<div class="col-md-3 left-area">
 
 				<div class="searching-area">
 					<!-- Searching -->
-					<input id="filter" name="filter" class="filter form-control" data-alf="#menu" placeholder="Search User Guide">
+					<div class="input-group">
+						<input id="filter" name="filter" class="filter form-control py-2 border-right-0 border" data-alf="#menu" type="search" placeholder="Search by title">
+						<span class="input-group-append">
+							<div class="input-group-text bg-transparent"><i class="fa fa-search"></i></div>
+						</span>
+					</div>
 				</div>
 				<aside class="sidebar">
 
@@ -59,15 +64,10 @@ $userguideInfo = $userguide->getList();
 												<div class="row">
 
 													<div class="col-md-10">
-														
 														<h2 class="text-capitalize text-title">
 															<?php print $element['featName']; ?>
 															<a class='linked-userguide' href='#<?php print $element['featLink']; ?>'><i class='fa fa-link' aria-hidden='true'></i></a>
 														</h2>
-
-														<!--<div class="text-muted h7 mb-2">
-															<i class="fa fa-calendar"></i> <?php print $element['lastUpdate']; ?> 
-														</div> -->
 													</div>
 													<div class="col-md-2">
 														<div class="editable-content">
@@ -80,12 +80,18 @@ $userguideInfo = $userguide->getList();
 														</div>
 													</div>
 												</div>
-												<hr>
 
 												<!--- Feature Content -->
 												<div class="content-feature">
-													<div class="card-text"><?php print $element['featContent']; ?></div>
-													<div class="modal"></div>
+													<div class="card-text">
+														<article class="article">
+															<div class="text-muted h7 mb-2">
+																<?php print $element['lastUpdate']; ?> • <span class="eta"></span>
+															</div>
+															<hr>
+															<?php print $element['featContent']; ?>
+														</article>
+													</div>
 												</div>
 
 											</div>                    
@@ -103,11 +109,11 @@ $userguideInfo = $userguide->getList();
 				</div>
 
 				<!-- Modal -->
-				<div class="modal fade" id="ModalNewUserguide" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="true" data-keyboard="true">
+				<div class="modal fade" id="ModalNewUserguide" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-keyboard="true">
 					<div class="modal-dialog modal-dialog-centered" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h6 class="modal-title" id="exampleModalLongTitle">Add New Content User Guide</h6>
+								<h3 class="modal-title" id="exampleModalLongTitle">Add New Content User Guide</h3>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
@@ -144,7 +150,7 @@ $userguideInfo = $userguide->getList();
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-									<button type="button" class="btn btn-primary float-right" id="save-userguide">Submit</button>
+									<button type="button" class="btn btn-primary float-right" id="save-userguide" onclick="setFocus()">Submit</button>
 								</div>
 								<?php
 								require 'assets/script.php';
@@ -169,7 +175,7 @@ $userguideInfo = $userguide->getList();
 	<!-- Bootstrap -->
 	<script type="text/javascript" src='assets/js/popper.js'></script>
 	<script type="text/javascript" src='assets/js/bootstrap.js'></script>
-	
+
 	<!-- Textarea Editor TinyMCE -->
 	<script type="text/javascript" src="assets/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
 	<script type="text/javascript" src="assets/tinymce/custom.tinymce.js"></script>
@@ -179,8 +185,48 @@ $userguideInfo = $userguide->getList();
 	<!-- Load Data Tree Js-->
 	<script src="user_guide.js"></script> 
 
+	<script type="text/javascript" src="assets/script.js"></script>
+
+	<script type="text/javascript">
+		$(function() {
+			$('article').each(function() {
+				const _this = $(this);
+				_this.readingTime({
+					readingTimeTarget: _this.find('.eta'),
+					success: function(data) {
+						//console.log(data);
+					},
+					error: function(data) {
+						_this.find('.eta').remove();
+					}
+				});
+			});
+		});
+	</script>
+
+	<script type="text/javascript">
+		//Button save focus form
+		function setFocus() { 
+			document.getElementById('feat-name').focus(); 
+		}
+
+		var input = document.getElementById('feat-name');
+		input.addEventListener("keyup", function(event) {
+			if (event.keyCode === 13) {
+				event.preventDefault();
+				document.getElementById("save-userguide").click();
+			}
+		});
+	</script>
+
+
 	<script>
 		$(document).ready(function() {
+
+			//Modal Focus Form
+			$('#ModalNewUserguide').on('shown.bs.modal', function() {
+				$('#feat-name').trigger('focus');
+			});
 
 			$(function() {
 				var tree = $('#userguide_list'),
