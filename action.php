@@ -117,7 +117,7 @@ if(!empty($post['action']) && $post['action']=="fetch_userguide") {
            </div>
            <div class="form-group">        
               <div class="col-sm-offset-2 col-sm-12">
-                <button type="button" style="margin-bottom: 20px;" class="btn btn-primary float-right save-update" data-save-userguideid="'.$fetchUserguide['id'].'">Save</button>
+                <button type="button" style="margin-bottom: 20px;" class="btn btn-primary float-right save-update" data-save-userguideid="'.$fetchUserguide['id'].'" onclick="window.location.href="#'.$fetchUserguide['featName'].';">Save</button>
               </div>
            </div>
         </div>
