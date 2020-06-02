@@ -80,6 +80,12 @@ if(!empty($post['action']) && $post['action']=="create") {
           });
         });
       });
+    </script>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $("img").attr("data-action", "zoom");
+      });
     </script>'
     ;
 }
@@ -193,6 +199,12 @@ if(!empty($post['action']) && $post['action']=="update") {
             }
           });
         });
+      });
+    </script>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $("img").attr("data-action", "zoom");
       });
     </script>';
 }

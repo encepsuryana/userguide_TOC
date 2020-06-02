@@ -17,9 +17,12 @@ $userguideInfo = $userguide->getList();
 	<!-- FontAwesome core CSS -->
 	<link rel="stylesheet" type="text/css" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/simple-line-icons.css">
+	<!-- ZOOM -->
+	<link rel="stylesheet" type="text/css" href="assets/zoom/css/zoom.css">
 	<!-- Custom Layout -->
 	<link rel="stylesheet" type="text/css" href="assets/style.css">
 	<link rel="stylesheet" type="text/css" href="assets/responsive.css">
+
 	
 	<title>User Guide</title>
 </head> 
@@ -60,10 +63,8 @@ $userguideInfo = $userguide->getList();
 				<!-- List User Guide -->
 				<div id="userguide_list"></div>
 			</aside>
-
 		</nav>
 
-		
 		<div id="content" class="main_content">
 			<section class="showcase">
 				<span id="render-userguide-data">
@@ -190,6 +191,9 @@ $userguideInfo = $userguide->getList();
 		<script src="user_guide.js"></script> 
 
 		<script type="text/javascript" src="assets/script.js"></script>
+		
+		<!-- ZOOM -->
+		<script type="text/javascript" src="assets/zoom/js/zoom.js"></script>
 
 		<script type="text/javascript">
 			$(document).ready(function () {
@@ -197,6 +201,8 @@ $userguideInfo = $userguide->getList();
 					$('#sidebar').toggleClass('active');
 					$(this).toggleClass('active');
 				});
+
+				$("img").attr("data-action", "zoom");
 			});
 		</script>
 
