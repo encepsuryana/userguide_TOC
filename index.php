@@ -202,7 +202,12 @@ $userguideInfo = $userguide->getList();
 					$(this).toggleClass('active');
 				});
 
-				$("img").attr("data-action", "zoom");
+				$('img').attr('data-action', 'zoom');
+
+				$('#ModalNewUserguide').on('shown.bs.modal', function() {
+					$('#feat-name').trigger('focus');
+				});
+
 			});
 		</script>
 
@@ -235,10 +240,6 @@ $userguideInfo = $userguide->getList();
 					document.getElementById("save-userguide").click();
 				}
 			});
-
-			function clearFilter() {
-				$('#filter').val('');
-			}
 		</script>
 
 		<script type="text/javascript">
@@ -250,82 +251,75 @@ $userguideInfo = $userguide->getList();
 			});
 		</script>
 
-
 		<script>
 			$(document).ready(function() {
+				$(function() {
+					var tree = $('#userguide_list'),
+					filter = $('#filter'),
+					filtering = false,
+					thread = null;
 
-			//Modal Focus Form
-			$('#ModalNewUserguide').on('shown.bs.modal', function() {
-				$('#feat-name').trigger('focus');
-			});
+					tree.tree({
+						data: userguide_list,
+						animationSpeed: "fast",
+						useContextMenu: false,
+						selectable: true,
+						autoEscape: false,
+						autoOpen: true,
+						closedIcon: '&#x25B8;',
+						openedIcon: '&#x25BE;',
+						onCreateLi: function(node, $li) {
+							var title = $li.find('.jquser-title'),
+							search = filter.val().toLowerCase(),
+							value = title.text().toLowerCase();
 
-			$(function() {
-				var tree = $('#userguide_list'),
-				filter = $('#filter'),
-				filtering = false,
-				thread = null;
-
-				tree.tree({
-					data: userguide_list,
-					animationSpeed: "fast",
-					useContextMenu: false,
-					selectable: true,
-					autoEscape: false,
-					autoOpen: true,
-					closedIcon: '&#x25B8;',
-					openedIcon: '&#x25BE;',
-					onCreateLi: function(node, $li) {
-						var title = $li.find('.jquser-title'),
-						search = filter.val().toLowerCase(),
-						value = title.text().toLowerCase();
-
-						if(search !== '') {
-							$li.hide();
-							if(value.indexOf(search) > -1) {
-								$li.show();
-								var parent = node.parent;
-								while(typeof(parent.element) !== 'undefined') {
-									$(parent.element)
-									.show()
-									.addClass('jquser-filtered');
-									parent = parent.parent;
+							if(search !== '') {
+								$li.hide();
+								if(value.indexOf(search) > -1) {
+									$li.show();
+									var parent = node.parent;
+									while(typeof(parent.element) !== 'undefined') {
+										$(parent.element)
+										.show()
+										.addClass('jquser-filtered');
+										parent = parent.parent;
+									}
 								}
-							}
-							if(!filtering) {
-								filtering = true;
-							};
-							if(!tree.hasClass('jquser-filtering')) {
-								tree.addClass('jquser-filtering');
-							};
-						} else {
+								if(!filtering) {
+									filtering = true;
+								};
+								if(!tree.hasClass('jquser-filtering')) {
+									tree.addClass('jquser-filtering');
+								};
+							} else {
+								if(filtering) {
+									filtering = false;
+								};
+								if(tree.hasClass('jquser-filtering')) {
+									tree.removeClass('jquser-filtering');
+								};
+							};	
+						},
+						onCanMove: function(node) {
 							if(filtering) {
-								filtering = false;
+								return false;
+							} else {
+								return true;
 							};
-							if(tree.hasClass('jquser-filtering')) {
-								tree.removeClass('jquser-filtering');
-							};
-						};	
-					},
-					onCanMove: function(node) {
-						if(filtering) {
-							return false;
-						} else {
-							return true;
-						};
-					}
+						}
 
+					});
+
+					filter.keyup(function() {
+						clearTimeout(thread);
+						thread = setTimeout(function () {
+							tree.tree('loadData', userguide_list);
+						}, 50);
+					});
 				});
 
-				filter.keyup(function() {
-					clearTimeout(thread);
-					thread = setTimeout(function () {
-						tree.tree('loadData', userguide_list);
-					}, 50);
-				});
 			});
+		</script>
 
-		});
-	</script>
-
-</body> 
-</html>
+	</body> 
+	</html>

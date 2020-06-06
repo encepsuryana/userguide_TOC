@@ -175,24 +175,20 @@
 		
 		} else if(s.lang == 'id') {
 			lessThanAMinute = s.lessThanAMinuteString || 'Kurang dari semenit';
-			minShortForm = 'menit untuk membaca';
+			minShortForm = 'Menit untuk membaca';
 
-		} else if(s.lang == 'en') {
+		} else {
 			lessThanAMinute = s.lessThanAMinuteString || 'Less than a minute';
 			minShortForm = 'Minutes to read';
 		}
 		
 
-		// for each element
 		el.each(function(index) {
 
-			// if s.remotePath and s.remoteTarget aren't null
 			if(s.remotePath != null && s.remoteTarget != null) {
 
-				// get contents of remote file
 				$.get(s.remotePath, function(data) {
 
-					// set time using the remote target found in the remote file
 					setTime({
 						text: $('<div>').html(data).find(s.remoteTarget).text()
 					});
@@ -200,7 +196,6 @@
 
 			} else {
 
-				// set time using the targeted element
 				setTime({
 					text: el.text()
 				});

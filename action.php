@@ -1,7 +1,6 @@
 <?php
 // include user_guide class 
 include_once 'class/User_guide.php';
-require 'assets/script.php';
 // create obj
 $userguide = new User_guide();
 // post method
@@ -11,6 +10,7 @@ $json = array();
 
 // create record in database
 if(!empty($post['action']) && $post['action']=="create") {
+  require 'assets/script.php';
 	$userguide->setFeatName($post['featName']);
 	$userguide->setFeatLink($post['featLink']);
   $userguide->setFeatContent($post['featContent']);
@@ -86,13 +86,13 @@ if(!empty($post['action']) && $post['action']=="create") {
       $(document).ready(function() {
         $("img").attr("data-action", "zoom");
       });
-    </script>'
-    ;
+    </script>';
 }
 
 // update record in database
 if(!empty($post['action']) && $post['action']=="fetch_userguide") {
-	$userguide->setUserguideID($post['userguide_id']);
+	require 'assets/script.php';
+  $userguide->setUserguideID($post['userguide_id']);
 	$fetchUserguide = $userguide->getUserguide();
 	header('Content-Type: application/json');
 	echo '<form id="dynamic-post-'.$post['userguide_id'].'" class="dynamic-post"">
@@ -123,7 +123,7 @@ if(!empty($post['action']) && $post['action']=="fetch_userguide") {
            </div>
            <div class="form-group">        
               <div class="col-sm-offset-2 col-sm-12">
-                <button type="button" style="margin-bottom: 20px;" class="btn btn-primary float-right save-update" data-save-userguideid="'.$fetchUserguide['id'].'" onclick="window.location.href="#'.$fetchUserguide['featName'].';">Save</button>
+                <button type="button" style="margin-bottom: 20px;" class="btn btn-primary float-right save-update" data-save-userguideid="'.$fetchUserguide['id'].'">Save</button>
               </div>
            </div>
         </div>

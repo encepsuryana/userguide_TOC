@@ -43,8 +43,7 @@
 
       blockquote p {
           display: inline;
-      }
-      `,
+      }`,
       contextmenu: 'paste | link media image inserttable | cell row column deletetable',
       file_picker_callback: function(callback, value, meta) {
 
